@@ -12,15 +12,14 @@ CFLAGS= -ansi -Wall -pipe -O3 -ffast-math -funsafe-math-optimizations \
 LDFLAGS=-L$(BUILDDIR) -L. -lauryn \
 		-lboost_program_options -lboost_serialization -lboost_mpi  
 
-OBJECTS=
+all: sim.timestamp
 
-SIMTIME=10000
-
-all: run
-
-run: sim_lgnet ratemod.dat
+sim.timestamp: sim_lgnet ratemod.dat
 	./sim_lgnet
+	> $<
 
+ratemod.dat: ratemod.dat.gz
+	gunzip -c $< > $@
 
 sim_%: sim_%.o $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) $< $(LDFLAGS) -o $(subst .o,,$<)
