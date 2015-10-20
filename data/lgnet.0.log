@@ -1,0 +1,16 @@
+10/19/15 23:16:02:: Logger started on Rank 0
+10/19/15 23:16:02:: Auryn version 0.6.1 ( compiled Sep 29 2015 21:05:26 )
+10/19/15 23:16:02:: MPI run rank 0 of 1.
+10/19/15 23:16:02:: Setting up neuron groups ...
+10/19/15 23:16:02:: SpikingGroup:: Size 20000 (ROUNDROBIN)
+10/19/15 23:16:02:: SpikingGroup:: Size 5000 (ROUNDROBIN)
+10/19/15 23:16:02:: SpikingGroup:: Groups demands to run on single rank only (RANKLOCK).
+10/19/15 23:16:02:: SpikingGroup:: Size 2000 (BLOCKLOCK: [0:0] )
+10/19/15 23:16:02:: PoissonGroup:: Seeding with 0
+10/19/15 23:16:03:: Setting up connections ...
+10/19/15 23:16:15:: Setting up monitors ...
+10/19/15 23:16:15:: PopulationRateMonitor:: Setting binsize 1s
+10/19/15 23:16:15:: Simulating ...
+10/19/15 23:16:15:: Simulation triggered ( runtime=10000s )
+10/19/15 23:16:15:: On this rank: neurons_total=27000, effective_load=25000, synapses_total=67202458
+10/19/15 23:16:15:: On all ranks: neurons_total=27000, synapses_total=67202458
