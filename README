@@ -30,7 +30,7 @@ lgnet.0.ie.wmat : Connectivity matrix I->E in MatrixMarket format
 lgnet.0.ii.wmat : Connectivity matrix I->I in MatrixMarket format 
 
 Note that the spikes generated in this step might need further filtering as was
-done in Lütcke, H., Gerhard, F., et al.
+done in Lütcke, H., Gerhard, F., et al. (2013)
 
 Enjoy!
 
