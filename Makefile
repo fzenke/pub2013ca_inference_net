@@ -5,7 +5,7 @@ AURYNDIR = /home/zenke/auryn/
 # Where you have compiled the static Auryn library libauryn.a
 BUILDDIR = $(AURYNDIR)/build/arch/src
 
-CFLAGS= -ansi -Wall -pipe -O3 -ffast-math -funsafe-math-optimizations \
+CFLAGS= -ansi -pipe -O3 -ffast-math -funsafe-math-optimizations \
 		-march=native -mtune=native -pedantic \
 		-I$(AURYNDIR)/src -I$(AURYNDIR)/dev/src
 
