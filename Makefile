@@ -27,3 +27,5 @@ sim_%: sim_%.o $(OBJECTS)
 %.o : %.cpp
 	$(CC) $(CFLAGS) -c $<
 
+clean: 
+	rm -f sim_lgnet ratemod.dat data/lgnet.*
