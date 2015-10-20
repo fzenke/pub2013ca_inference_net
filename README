@@ -9,6 +9,8 @@ To run the simulation you need a compiled version of the network simulator
 Auryn,  which can be found at http://www.fzenke.net/auryn and
 http://github.org/fzenke/auryn.
 
+Note that the output files are VERY large!
+
 To run the simulation it will suffice on most Linux systems to call invoke make
 from the command line. Make will unpack the time series file with the brownian
 rate modulation, compile the code and run the simulation. Output files are
