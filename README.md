@@ -24,17 +24,16 @@ written to the subdirectory ./data.
 The simulation generates the following human readable files:
 
 
-lgnet.0.e.prate : Firing rate of exc population
-lgnet.0.i.ras : Spikes from inh population
-lgnet.0.e.ras : Spikes from exc population
-lgnet.0.p.ras : Spikes from Poisson population
-lgnet.0.e.mem : First couple of seconds of membrane of neuron 123
-lgnet.0.log : Logfile
-lgnet.0.ee.wmat : Connectivity matrix E->E in MatrixMarket format 
-lgnet.0.ei.wmat : Connectivity matrix E->I in MatrixMarket format 
-lgnet.0.ie.wmat : Connectivity matrix I->E in MatrixMarket format 
-lgnet.0.ii.wmat : Connectivity matrix I->I in MatrixMarket format 
-
+    lgnet.0.e.prate : Firing rate of exc population
+    lgnet.0.i.ras : Spikes from inh population
+    lgnet.0.e.ras : Spikes from exc population
+    lgnet.0.p.ras : Spikes from Poisson population
+    lgnet.0.e.mem : First couple of seconds of membrane of neuron 123
+    lgnet.0.log : Logfile
+    lgnet.0.ee.wmat : Connectivity matrix E->E in MatrixMarket format 
+    lgnet.0.ei.wmat : Connectivity matrix E->I in MatrixMarket format 
+    lgnet.0.ie.wmat : Connectivity matrix I->E in MatrixMarket format 
+    lgnet.0.ii.wmat : Connectivity matrix I->I in MatrixMarket format 
 
 Note that the spikes generated in this step might need further filtering as was
 done in Lütcke, H., Gerhard, F., et al. (2013)
