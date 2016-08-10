@@ -31,17 +31,17 @@
 #define NE 20000
 #define NI 20000/4
 
-using namespace std;
+using namespace auryn;
 
 namespace po = boost::program_options;
 namespace mpi = boost::mpi;
 
 int main(int ac,char *av[]) {
 
-	string dir = "./data";
-	string infilename = "";
-	string strbuf ;
-	string msg;
+	std::string dir = "./data";
+	std::string infilename = "";
+	std::string strbuf ;
+	std::string msg;
 
 	double w = 0.2;
 	double wext = 0.22;
@@ -52,28 +52,19 @@ int main(int ac,char *av[]) {
 	int errcode = 0;
 
 	// BEGIN Global stuff
-	mpi::environment env(ac, av);
-	mpi::communicator world;
-	communicator = &world;
-
-	stringstream oss;
-	oss << dir  << "/lgnet." << world.rank() << ".";
-	string outputfile = oss.str();
-
-	stringstream logfile;
-	logfile << outputfile << "log";
-	logger = new Logger(logfile.str(),world.rank());
-
-	sys = new System(&world);
+	auryn_init(ac,av,dir,"lgnet");
 	// END Global stuff
 	
+	std::stringstream oss;
+	oss << dir  << "/lgnet." << sys->mpi_rank() << ".";
+	std::string outputfile = oss.str();
 
     try {
 
         po::options_description desc("Allowed options");
         desc.add_options()
             ("help", "produce help message")
-            ("load", po::value<string>(), "input weight matrix")
+            ("load", po::value<std::string>(), "input weight matrix")
         ;
 
         po::variables_map vm;        
@@ -81,23 +72,23 @@ int main(int ac,char *av[]) {
         po::notify(vm);    
 
         if (vm.count("help")) {
-            cout << desc << "\n";
+			std::cout << desc << "\n";
             return 1;
         }
 
         if (vm.count("load")) {
-            cout << "load from matrix " 
-                 << vm["load"].as<string>() << ".\n";
-			infilename = vm["load"].as<string>();
+			std::cout << "load from matrix " 
+                 << vm["load"].as<std::string>() << ".\n";
+			infilename = vm["load"].as<std::string>();
         } 
 
     }
-    catch(exception& e) {
-        cerr << "error: " << e.what() << "\n";
+    catch(std::exception& e) {
+		std::cerr << "error: " << e.what() << "\n";
         return 1;
     }
     catch(...) {
-        cerr << "Exception of unknown type!\n";
+		std::cerr << "Exception of unknown type!\n";
     }
 
 
@@ -132,8 +123,8 @@ int main(int ac,char *av[]) {
 		con_ee = new SparseConnection(  neurons_e,neurons_e,w,sparseness,GLUT);
 		// con_ee->random_data(w,w);
 	} else {
-		stringstream ifss;
-		ifss << infilename << "." << world.rank();
+		std::stringstream ifss;
+		ifss << infilename << "." << sys->mpi_rank();
 		strbuf = ifss.str();
 		strbuf += ".ee.wmat";
 		con_ee = new SparseConnection(  neurons_e,neurons_e,strbuf.c_str(),GLUT);
@@ -156,7 +147,7 @@ int main(int ac,char *av[]) {
 	msg = "Setting up monitors ...";
 	logger->msg(msg,PROGRESS,true);
 
-	stringstream filename;
+	std::stringstream filename;
 	filename << outputfile << "e.ras";
 	SpikeMonitor * smon_e = new SpikeMonitor( neurons_e, filename.str().c_str() );
 
@@ -216,7 +207,7 @@ int main(int ac,char *av[]) {
 	delete sys;
 
 	if (errcode)
-		env.abort(errcode);
+		mpienv->abort(errcode);
 
 	return errcode;
 }

@@ -12,7 +12,7 @@ of Henry Lütcke: https://github.com/HelmchenLab/CalciumSim
 
 To run the simulation you need a compiled version of the network simulator
 Auryn,  which can be found at http://www.fzenke.net/auryn and
-http://github.org/fzenke/auryn.
+http://github.org/fzenke/auryn. Requires Auryn v0.8
 
 Note that the output files are VERY large!
 

@@ -1,16 +1,19 @@
 CC = /usr/lib64/mpich2/bin/mpicxx 
 CC = mpicxx 
 # Your Auryn install path
-AURYNDIR = /home/zenke/auryn/
-# Where you have compiled the static Auryn library libauryn.a
-BUILDDIR = $(AURYNDIR)/build/arch/src
+# Update the following lines to your system requirements
+AURYNPATH=$(HOME)/auryn
 
-CFLAGS= -ansi -pipe -O3 -ffast-math -funsafe-math-optimizations \
-		-march=native -mtune=native -pedantic \
-		-I$(AURYNDIR)/src -I$(AURYNDIR)/dev/src
+# Path to Auryn include files
+AURYNINC=$(AURYNPATH)/src
 
-LDFLAGS=-L$(BUILDDIR) -L. -lauryn \
-		-lboost_program_options -lboost_serialization -lboost_mpi  
+# Path to Auryn library
+AURYNLIB=$(AURYNPATH)/build/release/src
+
+# The following should not require updating in most cases 
+CC = mpic++
+CFLAGS=-ansi -pipe -O3 -march=native -ffast-math -pedantic -I/usr/include -I$(AURYNINC)
+LDFLAGS=-lboost_program_options -lboost_mpi -lboost_serialization -L$(AURYNLIB) -lauryn
 
 all: sim.timestamp
 
